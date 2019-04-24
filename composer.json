@@ -1,0 +1,13 @@
+{
+    "name": "djmitry/joomla-contact-form",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Zagainov",
+            "email": "d.i.ma.92@mail.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
