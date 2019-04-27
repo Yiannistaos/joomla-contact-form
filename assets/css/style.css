@@ -9,6 +9,13 @@
     background: #1b2838;
     color: #acb2b8;
 }
+.d-mod-djmitry-form__message {
+    color: #66C0F4;
+    margin: 10px 0;
+}
+.d-mod-djmitry-form__message.d-message_error {
+    color: #cc1616;
+}
 .d-mod-djmitry-form__header {
     padding: 20px;
     background: #2a475e;

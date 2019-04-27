@@ -34,10 +34,10 @@ jQuery(function($) {
         }, 300);
     };
 
-    function send(form, url) {
+    function send(url, form) {
         var fileInput = form.find(':file'),
             formData = new FormData(form.get(0)),
-            data = form.serialize(),
+            //data = form.serialize(),
             parent = form.closest('.d-mod-djmitry-form'),
             messageBlock = parent.find('.d-mod-djmitry-form__message');
 

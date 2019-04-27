@@ -92,6 +92,8 @@
 					default=""
 					filter="string" 
 				/>
+				<field name="modal" type="checkbox" label="Всплывающая форма" value="1" />
+				<field name="disable_css" type="checkbox" label="Отключить стили" value="1" />
 			</fieldset>
 			<fieldset
 				name="advanced">

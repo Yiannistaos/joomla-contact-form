@@ -3,7 +3,9 @@
 defined('_JEXEC') or die;
 
 $doc = JFactory::getDocument();
-$doc->addStyleSheet(JURI::root()."modules/mod_djmitry_form/assets/css/style.css");
+if (!$params->get('disable_css')) {
+	$doc->addStyleSheet(JURI::root()."modules/mod_djmitry_form/assets/css/style.css");
+}
 $doc->addScript(JURI::root()."modules/mod_djmitry_form/assets/js/script.js");
 
 /**

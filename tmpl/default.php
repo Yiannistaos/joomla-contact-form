@@ -2,9 +2,13 @@
 defined('_JEXEC') or die;
 $url = JURI::base(true) . '/modules/mod_djmitry_form/index.php';
 $id = $module->id;
+
+// TODO: опция модали
 ?>
-<a href="#" class="d-show-djmitry-form" data-target="<?= $module->id ?>">Отправить заявку</a>
-<div class="d-mod-djmitry-form<?= $params->get('moduleclass_sfx') ?> d-modal d-open1" data-id="<?= $module->id ?>">
+<?php if ($params->get('modal')) { ?>
+    <a href="#" class="d-show-djmitry-form" data-target="<?= $module->id ?>">Отправить заявку</a>
+<?php } ?>
+<div class="d-mod-djmitry-form<?= $params->get('moduleclass_sfx') ?><?= $params->get('modal') ? ' d-modal' : '' ?>" data-id="<?= $module->id ?>">
     <div class="d-mod-djmitry-form__inner">
         <div class="d-mod-djmitry-form__header"><h2><?= $params->get('title') ?></h2></div>
         <div class="d-mod-djmitry-form__body">
