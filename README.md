@@ -4,20 +4,18 @@
 [![Software License](https://img.shields.io/packagist/l/djmitry/joomla-contact-form.svg)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/djmitry/joomla-contact-form.svg)](https://packagist.org/packages/djmitry/joomla-contact-form)
 
+# Особенности
+1. Имеется настройка для учета целей яндекс метрики
+2. Обычная или всплывающая форма
+3. Отключение стилей
+
 # Установка
 Скачать архив и установить через расширения Joomla
 
-Или
-```bash
-$ composer require djmitry/joomla-contact-form
-```
-
-
 # Использование
-
+В модулях появится Djmitry Form
 
 # Пример полей
-
 ```bash
 [
     {
@@ -59,7 +57,6 @@ $ composer require djmitry/joomla-contact-form
 ]
 ```
 
-# Особенности
-1. Имеется настройка для учета целей яндекс метрики
-2. Обычная или всплывающая форма
-3. Отключение стилей
+# Примеры
+![Alt text](/screenshots/2019-04-27_15-23-27.png?raw=true "Обычная")
+![Alt text](/screenshots/2019-04-27_15-23-56.png?raw=true "Всплывающая")
