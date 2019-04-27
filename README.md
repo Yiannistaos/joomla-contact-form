@@ -58,5 +58,8 @@
 ```
 
 # Примеры
+Обычная
 ![Alt text](/screenshots/2019-04-27_15-23-27.png?raw=true "Обычная")
+
+Всплывающая
 ![Alt text](/screenshots/2019-04-27_15-23-56.png?raw=true "Всплывающая")

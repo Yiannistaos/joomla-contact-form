@@ -25,7 +25,6 @@ class ModDjmitryFormValidator
             }
         }
 
-
         if ($settings['file']) {
             $file = $input->files->get('data')['file'];
             //print_r($file); exit;
