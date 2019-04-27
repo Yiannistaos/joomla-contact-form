@@ -49,6 +49,12 @@ $ composer require djmitry/joomla-contact-form
         "label": "Сообщение",
         "type": "text",
         "required": 1
+    },
+    {
+        "name": "agree",
+        "label": "Соглашение",
+        "type": "agree",
+        "required": 1
     }
 ]
 ```

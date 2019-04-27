@@ -41,21 +41,19 @@ class ModDjmitryFormHelper
         
         $input = $this->app->input;
         $fields = $input->get('data', array(), 'ARRAY');
-        $settings = $this->getSettings();
         
-        $result = $validator::validate($fields, $settings);
-        if (is_array($result) && !$result['status']) {
-            return $result;
+        $settings = $this->getSettings();
+        if (!empty($settings['status']) && $settings['status'] === 0) {
+            return $settings;
         }
         
-        $file = $input->files->get('file');
-
-        if ($file['size'] / 1024 / 1024 > 2) {
-            return ['status' => 0, 'message' => 'Размер файла не должен быть больше 2мб'];
+        $validate = $validator::validate($fields, $settings, $input);
+        if (is_array($validate) && $validate['status'] === 0) {
+            return $validate;
         }
 
         $body = $this->createEmailBody($fields, $settings);
-        return $this->sendMail($body, $file);
+        return $this->sendMail($body);
     }
 
 
@@ -117,14 +115,20 @@ class ModDjmitryFormHelper
     {
         $data = json_decode($this->params->get('fields_settings'), true);
         if (is_null($data)) {
-            throw new Exception('Неверный формат настроек полей.');
+            //throw new Exception('Неверный формат настроек полей.');
+            return ['status' => 0, 'message' => 'Неверный формат настроек полей.'];
         }
-
+        
         $settings = [];
         foreach ($data as $key => $item) {
             $settings[$item['name']] = $item;
         }
-
+        
+        if (!count($settings)) {
+            //throw new Exception('Отсутствуют поля.');
+            return ['status' => 0, 'message' => 'Отсутствуют поля.'];
+        }
+        
         return $settings;
     }
 }

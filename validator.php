@@ -2,24 +2,39 @@
 
 class ModDjmitryFormValidator
 {
-    public static function validate(Array $fields, $settings)
-    {        
-        $num = 0;
-        foreach ($fields as $key => $value) {
-            $num++;
+    const MAX_FILE_SIZE = 1;
 
+    public static function validate(Array $fields, Array $settings, $input)
+    {        
+        //$diff = array_diff_key($settings, $fields);
+
+        foreach ($fields as $key => $value) {
             if (!isset($settings[$key])) {
-                throw new Exception('Не полные настройки формы');
+                return ['status' => 0, 'message' => 'Не полные настройки формы.'];
             }
 
             if ($settings[$key]['required']) {
-                if (!self::require($value)) {
+                if (!self::fill($value)) {
                     return ['status' => 0, 'message' => 'Заполните обязательные поля.'];
                 }
             }
 
             $result = self::checkType($value, $settings[$key]['type']);
-            if (is_array($result) && !$result['status']) {
+            if (is_array($result) && $result['status'] === 0) {
+                return $result;
+            }
+        }
+
+
+        if ($settings['file']) {
+            $file = $input->files->get('data')['file'];
+            //print_r($file); exit;
+            if ($settings['file']['required'] && $file['error'] !== 0) {
+                return ['status' => 0, 'message' => 'Файл отсутствует'];
+            }
+
+            $result = self::checkFile($file);
+            if ($result['status'] === 0) {
                 return $result;
             }
         }
@@ -57,11 +72,28 @@ class ModDjmitryFormValidator
         return false;
     }
 
-    public static function require($value)
+    public static function fill($value)
     {
         if (!trim($value)) {
             return false;
         }
         return true;
+    }
+    
+    private static function checkFile($file)
+    {
+        if (!$file) {
+            return ['status' => 0, 'message' => 'Нет файла'];
+        }
+
+        $size = $file['size'] / 1024 / 1024;
+        if ($size > self::MAX_FILE_SIZE) {
+            return ['status' => 0, 'message' => 'Размер файла ' . $size . 'мб, не должен быть больше ' . self::MAX_FILE_SIZE . 'мб'];
+        }
+    }
+
+    private static function fillFile($file)
+    {
+        return is_file($file);
     }
 }
