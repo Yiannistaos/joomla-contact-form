@@ -74,5 +74,20 @@ jQuery(function($) {
                 messageBlock.show();
             },
         });
-    }
+    };
+
+    // Показать
+    $('.d-show-djmitry-form').click(function(e) {
+        e.preventDefault();
+        let id = $(this).data('target'),
+            target = $('.d-mod-djmitry-form.d-modal[data-id=' + id + ']');
+        target.addClass('d-open');
+    });
+
+    // Скрыть
+    $('.d-mod-djmitry-form').click(function(e) {
+        if (!$(e.target).closest('.d-mod-djmitry-form__inner').length) {
+            $(this).removeClass('d-open');
+        }
+    });
 });

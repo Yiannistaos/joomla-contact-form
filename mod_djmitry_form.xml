@@ -18,6 +18,7 @@
 		<filename>validator.php</filename>
 		<folder>tmpl</folder>
 		<folder>assets</folder>
+		<folder>language</folder>
 	</files>
 	<config>
 		<fields name="params">

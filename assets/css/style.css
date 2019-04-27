@@ -1,8 +1,134 @@
-.d-mod-djmitry-form .d-input{
-    height: 25px;
-    width: 250px;
-    border: 1px solid gray;
+.d-mod-djmitry-form {
+    width: 400px;
+}
+.d-mod-djmitry-form * {
+    box-sizing: border-box;
 }
 .d-mod-djmitry-form__inner {
-    padding: 10px;
+    font-size: 16px;
+    background: #1b2838;
+    color: #acb2b8;
+}
+.d-mod-djmitry-form__header {
+    padding: 20px;
+    background: #2a475e;
+}
+.d-mod-djmitry-form h2 {
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    color: #66C0F4;
+}
+.d-mod-djmitry-form__body {
+    padding: 20px;
+}
+.d-mod-djmitry-form .d-form {
+    margin: 0;
+}
+.d-mod-djmitry-form .d-group {
+    margin: 0 0 15px;
+}
+.d-mod-djmitry-form .d-label {
+    display: inline-block;
+    margin: 0 0 5px;
+    font-size: 0.8em;
+}
+.d-mod-djmitry-form .d-input,
+.d-mod-djmitry-form .d-textarea {
+    width: 100%;
+    margin: 0;
+    border: 1px solid gray;
+    border-radius: 0px;
+    background: #121a24;
+    color: white;
+    font-size: 0.9em;
+}
+.d-mod-djmitry-form .d-input:focus,
+.d-mod-djmitry-form .d-textarea:focus {
+    border-color: rgba(82,168,236,0.8);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)
+}/*
+.d-mod-djmitry-form .d-input:invalid {
+    border-color: green;
+}*/
+.d-mod-djmitry-form .d-input:focus:invalid,
+.d-mod-djmitry-form .d-textarea:focus:invalid,
+.d-mod-djmitry-form .d-checkbox__input:focus:invalid {
+    border-color: red;
+    box-shadow: 0 0 8px #ff000091;
+}
+.d-mod-djmitry-form .d-input {
+    height: 35px;
+    padding: 0 10px;
+}
+.d-mod-djmitry-form .d-textarea {
+    padding: 7px 10px;
+}
+.d-mod-djmitry-form .d-checkbox {
+    
+}
+.d-mod-djmitry-form .d-checkbox__label {
+    margin: 0;
+}
+.d-mod-djmitry-form .d-checkbox__input {
+    -webkit-appearance: none;
+    background: #121a24;
+    width: 20px;
+    height: 20px;
+    border: 1px solid gray;
+    margin: 0;
+}
+.d-mod-djmitry-form .d-checkbox__input:focus {
+    outline: none;
+}
+.d-mod-djmitry-form .d-checkbox__input:checked {
+    background: #67c1f5;
+    border-color: #c6eaff;
+}
+.d-mod-djmitry-form .d-submit {
+    padding: 5px 15px;
+    border: none;
+    font-size: 0.9em;
+    border-radius: 2px;
+    background: #233d4f;
+    color: #67c1f5;
+}
+.d-mod-djmitry-form .d-submit:hover {
+    background: #67c1f5;
+    color: #fff;
+}
+.d-mod-djmitry-form.d-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #1b2838e0;
+}
+.d-mod-djmitry-form.d-modal.d-open {
+    height: auto;
+    width: auto;
+    overflow-y: auto;
+    animation: d-open .5s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+}
+.d-mod-djmitry-form.d-modal .d-mod-djmitry-form__inner {
+    width: 400px;
+    margin: auto;
+}
+@keyframes d-open {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
