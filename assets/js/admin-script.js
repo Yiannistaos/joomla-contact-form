@@ -39,14 +39,19 @@ jQuery(function($) {
         fields.after('<button type="button" class="d-field__add btn btn-small btn-success">Добавить</button>')
     };
 
-    // Добавить поля
+    // Добавить поле
     $('.d-field__add').click(function(e) {
         e.preventDefault();
         let newField = templateField.clone();
         fields.append(newField);
     });
 
-});
+    // Удалить поле
+    fields.on('click', '.d-field__remove', function(e) {
+        e.preventDefault();
+        $(this).closest('.d-field').remove();
+    });
+}); 
 /*
 [
     {
