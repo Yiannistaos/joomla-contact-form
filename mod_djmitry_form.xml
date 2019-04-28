@@ -135,6 +135,9 @@
 						value="static"></option>
 				</field>
 			</fieldset>
+			<fieldset name="fields" label="fields" addfieldpath="/modules/mod_djmitry_form/fields">
+				<field type="assetsfield" />
+			</fieldset>
 		</fields>
 	</config>
 	<languages folder="language">
