@@ -8,7 +8,10 @@ $id = $module->id;
 <?php if ($params->get('modal')) { ?>
     <a href="#" class="d-show-djmitry-form" data-target="<?= $module->id ?>">Отправить заявку</a>
 <?php } ?>
-<div class="d-mod-djmitry-form<?= $params->get('moduleclass_sfx') ?><?= $params->get('modal') ? ' d-modal' : '' ?>" data-id="<?= $module->id ?>">
+<div class="d-mod-djmitry-form<?= $params->get('moduleclass_sfx') ?><?= $params->get('modal') ? ' d-modal' : '' ?>" 
+    data-id="<?= $module->id ?>"
+    <?= $params->get('use_recaptcha') ? 'data-recaptcha-key="' . $params->get('recaptcha_public_key') . '"' : '' ?>>
+
     <div class="d-mod-djmitry-form__inner">
         <div class="d-mod-djmitry-form__header"><h2><?= $params->get('title') ?></h2></div>
         <div class="d-mod-djmitry-form__body">
@@ -51,3 +54,6 @@ $id = $module->id;
         </div>
     </div>
 </div>
+<?php if ($params->get('use_recaptcha')) { ?>
+<script src="https://www.google.com/recaptcha/api.js?render=<?= $params->get('recaptcha_public_key') ?>"></script>
+<?php } ?>

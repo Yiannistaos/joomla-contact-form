@@ -9,7 +9,21 @@ jQuery(function($) {
         
         $('form', module).on('submit', function(e) {
             e.preventDefault();
-            send(url, $(this));
+            let form = $(this),
+                recaptchaKey = module.data('recaptcha-key');
+
+            if (recaptchaKey) {
+                form.find('.d-submit').prop('disabled', true);
+                grecaptcha.ready(function() {
+                    grecaptcha.execute(recaptchaKey, {action: 'send_form'}).then(function(token) {
+                        form.find('[name=recaptcha]').remove();
+                        form.prepend('<input type="hidden" name="recaptcha" value="' + token + '">');
+                        send(url, form);
+                    });
+                });
+            } else {
+                send(url, form);
+            }
         });
     });
 
@@ -35,15 +49,17 @@ jQuery(function($) {
     };
 
     function send(url, form) {
-        var fileInput = form.find(':file'),
+        let btnSubmit = form.find('.d-submit'),
+            fileInput = form.find(':file'),
             formData = new FormData(form.get(0)),
-            //data = form.serialize(),
             parent = form.closest('.d-mod-djmitry-form'),
             messageBlock = parent.find('.d-mod-djmitry-form__message');
 
         if (fileInput.length) {
             formData.append(fileInput.attr('name'), fileInput.get(0).files[0]);
         }
+
+        btnSubmit.prop('disabled', true);
 
         $.ajax({
             url: url,
@@ -71,6 +87,7 @@ jQuery(function($) {
                 messageBlock.addClass('d-message_error').text(xhr.responseText);
             },
             complete: function() {
+                btnSubmit.prop('disabled', false);
                 messageBlock.show();
             },
         });

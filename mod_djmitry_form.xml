@@ -96,6 +96,23 @@
 				<field name="modal" type="checkbox" label="Всплывающая форма" value="1" />
 				<field name="disable_css" type="checkbox" label="Отключить стили" value="1" />
 			</fieldset>
+			<fieldset name="captcha" label="Каптча">
+				<field name="use_recaptcha" type="checkbox" label="Использовать Google reCaptcha v3.0" value="1" />
+				<field 
+					name="recaptcha_public_key"  
+					type="text" 
+					label="reCaptcha Публичный ключ"
+					default=""
+					filter="string" 
+				/>
+				<field 
+					name="recaptcha_secret_key"  
+					type="text" 
+					label="reCaptcha Секретный ключ"
+					default=""
+					filter="string" 
+				/>
+			</fieldset>
 			<fieldset
 				name="advanced">
 				<field

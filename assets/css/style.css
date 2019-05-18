@@ -105,6 +105,10 @@
     background: #67c1f5;
     color: #fff;
 }
+.d-mod-djmitry-form .d-submit:disabled {
+    opacity: 0.7;
+    cursor: normal;
+}
 .d-mod-djmitry-form.d-modal {
     position: fixed;
     top: 0;

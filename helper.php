@@ -42,6 +42,10 @@ class ModDjmitryFormHelper
         $input = $this->app->input;
         $fields = $input->get('data', array(), 'ARRAY');
         
+        if ($this->params->get('use_recaptcha') && !ReCaptcha::validate($this->params->get('recaptcha_secret_key'), $input->get('recaptcha'))) {
+            return ['status' => 0, 'message' => 'Ошибка reCaptcha'];
+        }
+        
         $settings = $this->getSettings();
         if (!empty($settings['status']) && $settings['status'] === 0) {
             return $settings;

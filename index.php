@@ -6,6 +6,7 @@ require_once JPATH_BASE . '/includes/defines.php';
 require_once JPATH_BASE . '/includes/framework.php';
 require_once dirname(__FILE__) . '/helper.php';
 require_once dirname(__FILE__) . '/validator.php';
+require_once dirname(__FILE__) . '/recaptcha.php';
 
 $helper = new ModDjmitryFormHelper();
 $app = JFactory::getApplication('site');
