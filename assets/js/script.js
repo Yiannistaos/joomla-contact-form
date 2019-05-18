@@ -64,7 +64,7 @@ jQuery(function($) {
                 } else {
                     messageBlock.addClass('d-message_error');
                 }
-                messageBlock.text(data.message);
+                messageBlock.html(data.message);
             },
             error: function(xhr, status) {
                 console.log(xhr);
@@ -89,5 +89,9 @@ jQuery(function($) {
         if (!$(e.target).closest('.d-mod-djmitry-form__inner').length) {
             $(this).removeClass('d-open');
         }
+    });
+
+    $('.d-mod-djmitry-form__close').click(function(e) {
+        $(this).closest('.d-mod-djmitry-form').removeClass('d-open');
     });
 });
