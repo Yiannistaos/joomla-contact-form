@@ -67,7 +67,7 @@
 					type="textarea" 
 					label="Сообщение после отправки"
 					description=""
-					default="Успешно отправлено!"
+					default="Здравствуйте, {name}! Мы скоро ответим!"
 					filter="safehtml" 
 					required="required"
 				/>
