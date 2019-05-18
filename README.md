@@ -5,6 +5,9 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/djmitry/joomla-contact-form.svg)](https://packagist.org/packages/djmitry/joomla-contact-form)
 
 # Особенности
+1. Возможность использовать Google reCaptcha 3.0
+    1. Добавить свой сайт в https://www.google.com/recaptcha/admin/create выбрав reCAPTCHA v3
+    2. Скопировать ключи и добавить в модуль на вкладке "Капча"
 1. Имеется настройка для учета целей яндекс метрики
 2. Обычная или всплывающая форма
 3. Отключение стилей
