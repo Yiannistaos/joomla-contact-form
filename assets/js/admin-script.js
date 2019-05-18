@@ -7,6 +7,8 @@ jQuery(function($) {
                 <div class="span3">\
                     <select name="type" placeholder="label">\
                         <option value="text">Текст</option>\
+                        <option value="email">Email</option>\
+                        <option value="phone">Телефон</option>\
                         <option value="file">Файл</option>\
                         <option value="agree">Соглашение</option>\
                     </select>\
