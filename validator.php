@@ -19,9 +19,11 @@ class ModDjmitryFormValidator
                 }
             }
 
-            $result = self::checkType($value, $settings[$key]['type']);
-            if (is_array($result) && $result['status'] === 0) {
-                return $result;
+            if ($value) {
+                $result = self::checkType($value, $settings[$key]['type']);
+                if (is_array($result) && $result['status'] === 0) {
+                    return $result;
+                }
             }
         }
 

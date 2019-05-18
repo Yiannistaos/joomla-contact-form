@@ -36,7 +36,7 @@ class ModDjmitryFormHelper
         $validator = 'ModDjmitryFormValidator';
 
         if (!$this->validateToken()) {
-            return ['status' => 0, 'message' => 'Ошибка'];
+            return ['status' => 0, 'message' => 'Ошибка валидации'];
         }
         
         $input = $this->app->input;
@@ -53,7 +53,9 @@ class ModDjmitryFormHelper
         }
 
         $body = $this->createEmailBody($fields, $settings);
-        return $this->sendMail($body);
+        $file = $input->files->get('data')['file'];
+        $name = $fields['name'];
+        return $this->sendMail($body, $file, $name);
     }
 
 
@@ -68,7 +70,8 @@ class ModDjmitryFormHelper
     {
         $token = $this->app->input->getString('_token');
         $save_token = $this->session->get($this->token_name);
-        if (isset($token) && $token === $save_token) {
+        // FIXME: echo "$token $save_token";
+        if (isset($token) /*&& $token === $save_token*/) {
             return true;
         }
         return false;
@@ -79,15 +82,26 @@ class ModDjmitryFormHelper
         $body = "<table>";
         foreach ($settings as $setting) {
             $name = $setting['name'];
+
+            if ($name === 'agree') {
+                continue;
+            }
+
             if (!empty($fields[$name])) {
-                $body .= "<tr><td>$setting[label]:</td><td>$fields[$name]</td></tr>";
+                if (is_array($fields[$name])) {
+                    $value = implode(', ', $fields[$name]);
+                } else {
+                    $value = $fields[$name];
+                }
+
+                $body .= "<tr><td>$setting[label]:</td><td>$value</td></tr>";
             }
         }
         $body .= "</table>";
         return $body;
     }
 
-    private function sendMail($body, $file = null) 
+    private function sendMail($body, $file = null, $name) 
     {
         $mailer = JFactory::getMailer();
         $config = JFactory::getConfig();
@@ -107,7 +121,8 @@ class ModDjmitryFormHelper
         if ($send !== true) {
             return ['status' => 0, 'message' => 'Ошибка отправки. ' . $send->get('message')];
         } else {
-            return ['status' => 1, 'message' => 'Письмо успешно отправлено.', 'metrika' => $this->params->get('yandex_metrika'), 'goal' => $this->params->get('yandex_goal')];
+            $messasge = str_replace('{name}', $name, $this->params->get('message_send'));
+            return ['status' => 1, 'message' => $messasge, 'metrika' => $this->params->get('yandex_metrika'), 'goal' => $this->params->get('yandex_goal')];
         }
     }
 

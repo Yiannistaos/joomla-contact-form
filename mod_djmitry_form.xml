@@ -4,7 +4,7 @@
 	<creationDate>2019</creationDate>
 	<author>Dmitry Zagainov</author>
 	<authorEmail>d.i.ma.92@mail.ru</authorEmail>
-	<authorUrl>https://github.com</authorUrl>
+	<authorUrl>https://github.com/djmitry</authorUrl>
 	<copyright>Copyright © 2019 - All rights reserved.</copyright>
 	<license>MIT</license>
 	<version>1.0.0</version>
@@ -19,6 +19,7 @@
 		<folder>tmpl</folder>
 		<folder>assets</folder>
 		<folder>language</folder>
+		<folder>fields</folder>
 	</files>
 	<config>
 		<fields name="params">
@@ -64,7 +65,7 @@
 					label="Сообщение после отправки"
 					description=""
 					default="Успешно отправлено!"
-					filter="string" 
+					filter="safehtml" 
 					required="required"
 				/>
 				<field 

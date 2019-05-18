@@ -3,6 +3,7 @@
 defined('_JEXEC') or die;
 
 $doc = JFactory::getDocument();
+JHtml::_('bootstrap.framework');
 if (!$params->get('disable_css')) {
 	$doc->addStyleSheet(JURI::root()."modules/mod_djmitry_form/assets/css/style.css");
 }
