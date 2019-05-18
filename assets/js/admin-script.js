@@ -72,7 +72,6 @@ jQuery(function($) {
             row.required = $(this).find('[name=required]').is(':checked');
             data.push(row);
         });
-        //console.log(JSON.stringify(data));
         settings.val(JSON.stringify(data));
     };
 }); 
