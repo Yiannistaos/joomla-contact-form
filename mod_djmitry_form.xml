@@ -38,10 +38,11 @@
 				/>
 				<field 
 					name="text"  
-					type="text" 
+					type="editor" 
 					label="Текст"
 					description=""
 					default=""
+					height="100"
 					filter="safehtml" 
 				/>
 				<field 

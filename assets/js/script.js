@@ -103,7 +103,7 @@ jQuery(function($) {
 
     // Скрыть
     $('.d-mod-djmitry-form').click(function(e) {
-        if (!$(e.target).closest('.d-mod-djmitry-form__inner').length) {
+        if (!$(e.target).closest('.d-mod-djmitry-form__form').length) {
             $(this).removeClass('d-open');
         }
     });
